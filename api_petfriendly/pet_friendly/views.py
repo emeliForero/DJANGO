@@ -12,6 +12,26 @@ def obtener_lista_animales(request):
     return JsonResponse(data, safe=False)
 
 @csrf_exempt
+def agregar_animal(request):
+    if request.method == 'POST':
+        # Obtener los datos del cuerpo de la solicitud
+        data = json.loads(request.body)
+        animal_id = data.get('animal_id')
+        name = data.get('name')
+        age = data.get('age')
+        species = data.get('species')
+        url_image = data.get('url_image')
+        state = data.get('state')
+        shelter = data.get('shelter')
+
+        animal = Animal.objects.create(animal_id=animal_id, name=name, age=age, species=species, url_image=url_image, state=state, shelter=shelter)
+        
+        # Devolver una respuesta
+        return JsonResponse({'mensaje': 'Anminal agregado correctamente'}, status=201)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)    
+
+@csrf_exempt
 def agregar_contacto(request):
     if request.method == 'POST':
         # Obtener los datos del cuerpo de la solicitud

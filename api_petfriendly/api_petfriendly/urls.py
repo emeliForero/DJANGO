@@ -20,5 +20,6 @@ from pet_friendly import views
 
 urlpatterns = [
     path('animales/', views.obtener_lista_animales, name='lista_animales'),
+    path('animales/create/', views.agregar_animal, name='agregar_animal'),
     path('animales/contactos/', views.agregar_contacto, name='agregar_contacto'),
 ]
