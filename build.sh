@@ -9,4 +9,4 @@ pip install -r requirements.txt
 python api_petfriendly/manage.py collectstatic --no-input
 
 # Apply any outstanding database migrations
-python api_petfriendly/manage.py migrate
+#python api_petfriendly/manage.py migrate
