@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,15 +83,16 @@ WSGI_APPLICATION = 'api_petfriendly.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mydb',
-        'USER': 'root',
+        'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': 'localhost',  # O la dirección de tu servidor MySQL
-        'PORT': '3306',       # Puerto por defecto de MySQL
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
+DATABASES['default'] = dj_database_url.parse("postgres://mydb_c3zx_user:b3AtiKWrFZtB9aXLJbSWPDlUyZQekwUL@dpg-coi953tjm4es739k9ugg-a.oregon-postgres.render.com/mydb_c3zx")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
